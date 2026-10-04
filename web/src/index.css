@@ -1,0 +1,218 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Top navigation */
+.topnav {
+  position: relative;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left/right split */
+  flex-wrap: nowrap;
+  padding: 0 12px;
+  background: #ebcda3;
+  /*box-shadow: 0 6px 18px rgba(255,174,66,0.2);*/
+  box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.5);
+-webkit-box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.5);
+-moz-box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.5);
+  z-index: 20000;
+}
+.topnav-left { display: flex; align-items: center; }
+.topnav-right { display: flex; align-items: center; margin-left: auto; }
+.topnav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topnav .logo {
+  font-size: 20px;
+}
+.logo-img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.topnav .title {
+  font-weight: 800;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  letter-spacing: -0.02em;
+  font-size: 16px;
+  color: #6F4E37;
+}
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+/* keep the nav menu inside the hamburger on all sizes per request */
+.nav-list { list-style: none; margin: 0; padding: 0; display: none; position: absolute; left: 12px; top: 56px; background: white; border: 1px solid #eee; border-radius: 6px; padding: 8px; box-shadow: 0 6px 12px rgba(0,0,0,0.08); flex-direction: column; min-width: 140px; z-index: 21000; }
+/* Dropdown card */
+.nav-list { list-style: none; margin: 0; padding: 8px; display: none; position: absolute; right: 12px; top: 56px; background: rgba(255,255,255,0.98); border: 1px solid rgba(0,0,0,0.06); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); flex-direction: column; min-width: 180px; z-index: 21000; backdrop-filter: blur(6px); }
+.nav-list.open { display: flex; animation: popIn 160ms ease; }
+.nav-list::before { content: ''; position: absolute; left: 18px; top: -6px; width: 12px; height: 12px; background: rgba(255,255,255,0.98); transform: rotate(45deg); border-left: 1px solid rgba(0,0,0,0.06); border-top: 1px solid rgba(0,0,0,0.06); }
+.nav-list li { display: block; border-radius: 6px; padding: 4px 4px; transition: background-color 160ms ease, color 160ms ease; }
+
+/* subtle hover and focus for dropdown items */
+.nav-list li:hover { background: rgba(0,0,0,0.06); }
+.nav-list li:focus-within { background: rgba(0,0,0,0.06); }
+
+.nav-span { display: inline-block; width: 100%; padding: 6px 8px; cursor: pointer; border-radius: 6px; text-decoration: none; }
+.nav-span:hover { text-decoration: none; }
+.nav-span:focus { outline: 2px solid rgba(0,0,0,0.12); outline-offset: 2px; }
+
+
+.bee-btn-menu:hover{
+  box-shadow: 0 2px 8px rgba(16,24,40,0.08) !important;
+  border-color: #c2c2c2 !important;
+
+}
+
+.bee-menu-item-beehive:hover{
+  box-shadow: 0 2px 8px rgba(16,24,40,0.08) !important;
+  border-color: #c2c2c2 !important;
+  background: rgba(0, 0, 0, 0.06) !important;
+
+}
+
+/* Hamburger menu button */
+.hamburger {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  /*border: 1px solid rgba(255,255,255,0.2);*/
+  border: 1px solid rgba(111,78,55,0.4);
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+  cursor: pointer;
+  transition: all 200ms ease;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger:hover {
+  box-shadow: 0 2px 8px rgba(16,24,40,0.08);
+  border-color: #6F4E37;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: #6F4E37;
+  border-radius: 4px;
+  width: 20px;
+  transition: all 200ms ease-out;
+  transform-origin: center;
+}
+
+/* Default state - three lines */
+.hamburger span:nth-child(1) {
+  width: 20px;
+  transform: translateY(0) rotate(0);
+}
+
+.hamburger span:nth-child(2) {
+  width: 20px;
+  opacity: 1;
+}
+
+.hamburger span:nth-child(3) {
+  width: 20px;
+  transform: translateY(0) rotate(0);
+}
+
+/* Expanded state - X shape */
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+  width: 20px;
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+  width: 20px;
+  opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+  width: 20px;
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Ensure the right nav actions don't wrap under the brand on small widths */
+.topnav .nav-actions { position: relative; }
+
+@media (max-width: 420px) {
+  .topnav { padding: 0 8px; }
+  .topnav .title { font-size: 15px; }
+  .nav-list { right: 8px; }
+}
+
+/* the probelm */
+
+/* @media (prefers-color-scheme: dark) {
+  .topnav { background: linear-gradient(180deg, rgba(10,12,15,0.6), rgba(6,8,10,0.6)); color: #e6eef8; }
+  .nav-list { background: rgba(8,10,12,0.8); color: #e6eef8; border-color: rgba(255,255,255,0.04); }
+  .hamburger span { background: #e6eef8; }
+} */
+
+@keyframes popIn { from { transform: translateY(-6px) scale(0.98); opacity: 0 } to { transform: translateY(0) scale(1); opacity: 1 } }
+
+/* ensure app content isn't hidden behind header if needed (map overlays header so this is optional) */
+.app-content-offset { padding-top: 56px; }
+
+/* Ensure the Map sits under the fixed top navigation and fills remaining viewport height */
+.main-map {
+  top: 56px; /* same height as .topnav */
+  height: calc(100vh - 56px);
+  width: 100%;
+  box-sizing: border-box;
+  position: relative; /* so absolutely-positioned children (controls) are placed inside the map area */
+}
+
+/* Make sure the map container and rendered map canvas fill the .main-map area */
+.main-map > div,
+.main-map .mapboxgl-map,
+.main-map .maplibregl-map {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* Make location control appear above the map but inside .main-map */
+.map-container {
+  position: relative !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+
+.bee-view-chart-main{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.bee-view-chart-item {
+  flex: 1;          
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.bee-view-chart-tbl-row-title{
+  border-bottom: 1px solid #616161;
+}
+
+@media (max-width: 768px) {
+  .bee-view-chart-main {
+    flex-direction: column; /* Xếp dọc */
+  }
+
+  .bee-view-chart-item {
+    width: 100%;            /* Mỗi div chiếm toàn bộ chiều ngang */
+  }
+}

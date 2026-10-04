@@ -28,6 +28,7 @@ See the full architecture diagram in [`Buildingblock/1.png`](Buildingblock/1.png
 | `Bumblebee/Cert/` | Earlier NCKH (student research competition) submission: proposal, project outline, posters |
 | `Bumblebee/Chân đế/` | 3D-printed enclosure & weighing-base CAD (PDF drawings + `.3mf` print files) |
 | `Bumblebee/EdgeImpulse/` | Exported Edge Impulse inferencing library for the on-device queen-presence audio classifier |
+| [`web/`](web/) | React + Vite + TypeScript dashboard (MapLibre GPS view), Firebase Functions, and an Express/MySQL backend |
 
 ### Not included in this repository
 
