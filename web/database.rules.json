@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "beehives": {
+      "$hive_id": {
+        "status": {
+          ".indexOn": ["timestamp"],
+          ".read": true,
+          ".write": true
+        }
+      }
+    }
+  }
+}
+
+// {
+//   "rules": {
+//     "sensor_data": {
+//       ".indexOn": ["hive_id"]
+//     },
+//     ".read": "auth != null",
+//     ".write": "auth != null"
+//   }
+// }
